@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis de movimientos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <span class="app-header__mark">MV</span>
+    <span class="app-header__title">Análisis de movimientos</span>
+  </header>
+
+  <main class="app-main">
+
+    <!-- Estado inicial: carga de archivo -->
+    <section id="drop-screen" class="drop-screen">
+      <div id="dropzone" class="dropzone">
+        <p class="dropzone__text">Arrastra tu archivo Excel aquí</p>
+        <p class="dropzone__or">o</p>
+        <button id="select-btn" type="button" class="btn btn--primary">Seleccionar archivo</button>
+        <input id="file-input" type="file" accept=".xlsx,.xls" hidden>
+        <p id="drop-error" class="dropzone__error" hidden></p>
+      </div>
+    </section>
+
+    <!-- Estado de resultados -->
+    <section id="results-screen" class="results-screen" hidden>
+
+      <div class="summary">
+        <div class="summary__item">
+          <span class="summary__label">Total créditos</span>
+          <span id="total-creditos" class="summary__value summary__value--positive">$0</span>
+        </div>
+        <div class="summary__item">
+          <span class="summary__label">Total retiros</span>
+          <span id="total-retiros" class="summary__value summary__value--negative">$0</span>
+        </div>
+        <div class="summary__item">
+          <span class="summary__label">Balance</span>
+          <span id="total-balance" class="summary__value">$0</span>
+        </div>
+      </div>
+
+      <div class="table-block">
+        <h2 class="table-block__title">Movimientos contabilizados</h2>
+        <div class="table-wrap">
+          <table class="mv-table">
+            <thead>
+              <tr>
+                <th># ID</th>
+                <th>Concepto</th>
+                <th>Fecha</th>
+                <th>Referencia #.</th>
+                <th>Moneda</th>
+                <th class="num">Crédito</th>
+                <th class="num">Débito</th>
+              </tr>
+            </thead>
+            <tbody id="main-table-body"></tbody>
+          </table>
+          <p id="main-table-empty" class="table-empty" hidden>No hay movimientos contabilizados.</p>
+        </div>
+      </div>
+
+      <div class="table-block">
+        <h2 class="table-block__title">Retiros no contabilizados</h2>
+        <div class="table-wrap">
+          <table class="mv-table">
+            <thead>
+              <tr>
+                <th># ID</th>
+                <th>Concepto</th>
+                <th>Fecha</th>
+                <th>Referencia #.</th>
+                <th>Moneda</th>
+                <th class="num">Crédito</th>
+                <th class="num">Débito</th>
+              </tr>
+            </thead>
+            <tbody id="excluded-table-body"></tbody>
+          </table>
+          <p id="excluded-table-empty" class="table-empty" hidden>No hay retiros no contabilizados.</p>
+        </div>
+      </div>
+
+      <div class="reset-row">
+        <button id="reset-btn" type="button" class="btn btn--secondary">Cargar otro archivo</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

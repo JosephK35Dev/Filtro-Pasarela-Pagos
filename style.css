@@ -1,0 +1,568 @@
+
+:root {
+  --bg: #09090b;
+  --surface: #111113;
+  --surface-2: #18181b;
+  --surface-hover: #1f1f23;
+
+  --ink: #f4f4f5;
+  --ink-soft: #a1a1aa;
+  --ink-muted: #71717a;
+
+  --line: #27272a;
+  --line-hover: #3f3f46;
+
+  --accent: #c9a84c;
+  --accent-light: #e2c568;
+  --accent-dark: #9f8130;
+
+  --green: #4ade80;
+  --red: #f87171;
+
+  --radius: 12px;
+  --radius-small: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 18px 32px;
+
+  background: rgba(17, 17, 19, 0.92);
+  border-bottom: 1px solid var(--line);
+
+  position: relative;
+}
+
+.app-header__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    var(--accent-light),
+    var(--accent-dark)
+  );
+
+  color: #09090b;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.15);
+}
+
+.app-header__title {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.app-main {
+  width: 100%;
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  padding: 42px 24px 70px;
+}
+
+/* =========================================================
+   PANTALLA DE CARGA
+   ========================================================= */
+
+.drop-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 65vh;
+}
+
+.dropzone {
+  width: 100%;
+  max-width: 560px;
+
+  padding: 64px 40px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(201, 168, 76, 0.07),
+      transparent 55%
+    ),
+    var(--surface);
+
+  border: 1px dashed #3f3f46;
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dropzone:hover {
+  border-color: #52525b;
+}
+
+.dropzone.is-dragover {
+  border-color: var(--accent);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(201, 168, 76, 0.12),
+      transparent 65%
+    ),
+    var(--surface);
+
+  transform: translateY(-2px);
+}
+
+.dropzone__text {
+  margin: 0 0 10px;
+
+  color: var(--ink);
+
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.dropzone__or {
+  margin: 0 0 20px;
+
+  color: var(--ink-muted);
+
+  font-size: 13px;
+}
+
+.dropzone__error {
+  margin: 18px 0 0;
+
+  color: var(--red);
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.btn {
+  border: none;
+  border-radius: var(--radius-small);
+
+  padding: 11px 20px;
+
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #09090b;
+
+  box-shadow: 0 5px 18px rgba(201, 168, 76, 0.12);
+}
+
+.btn--primary:hover {
+  background: var(--accent-light);
+
+  box-shadow: 0 7px 24px rgba(201, 168, 76, 0.18);
+}
+
+.btn--secondary {
+  background: var(--surface-2);
+  color: var(--ink);
+
+  border: 1px solid var(--line);
+}
+
+.btn--secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--line-hover);
+}
+
+/* =========================================================
+   RESULTADOS
+   ========================================================= */
+
+.results-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* =========================================================
+   RESUMEN
+   ========================================================= */
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 0;
+
+  overflow: visible;
+}
+
+.summary__item {
+  position: relative;
+
+  min-height: 125px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  padding: 20px 22px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.16);
+
+  overflow: hidden;
+}
+
+.summary__item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--accent);
+
+  opacity: 0.8;
+}
+
+.summary__label {
+  color: var(--ink-muted);
+
+  font-size: 11px;
+  font-weight: 650;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary__value {
+  color: var(--ink);
+
+  font-size: 27px;
+  font-weight: 750;
+
+  letter-spacing: -0.025em;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.summary__value--positive {
+  color: var(--green);
+}
+
+.summary__value--negative {
+  color: var(--red);
+}
+
+/* =========================================================
+   BLOQUES DE TABLAS
+   ========================================================= */
+
+.table-block {
+  width: 100%;
+}
+
+.table-block__title {
+  margin: 0 0 12px;
+
+  color: var(--ink);
+
+  font-size: 15px;
+  font-weight: 650;
+
+  letter-spacing: -0.01em;
+}
+
+/* =========================================================
+   TABLAS
+   ========================================================= */
+
+.table-wrap {
+  width: 100%;
+
+  background: var(--surface);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  overflow-x: auto;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.mv-table {
+  width: 100%;
+
+  min-width: 700px;
+
+  border-collapse: collapse;
+
+  font-size: 13px;
+}
+
+.mv-table th,
+.mv-table td {
+  padding: 12px 15px;
+
+  text-align: left;
+
+  border-bottom: 1px solid var(--line);
+
+  white-space: nowrap;
+}
+
+.mv-table th {
+  background: var(--surface-2);
+
+  color: var(--ink-muted);
+
+  font-size: 11px;
+  font-weight: 650;
+
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+}
+
+.mv-table td {
+  color: #d4d4d8;
+}
+
+.mv-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.mv-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.mv-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.mv-table td.num,
+.mv-table th.num {
+  text-align: right;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   TABLA DE RETIROS NO CONTABILIZADOS
+   ========================================================= */
+
+.table-block:last-of-type .table-wrap {
+  border-color: rgba(248, 113, 113, 0.18);
+}
+
+.table-block:last-of-type .table-block__title {
+  color: #fca5a5;
+}
+
+/* =========================================================
+   MENSAJE CUANDO NO HAY DATOS
+   ========================================================= */
+
+.table-empty {
+  margin: 0;
+
+  padding: 24px 16px;
+
+  color: var(--ink-muted);
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   BOTÓN CARGAR OTRO ARCHIVO
+   ========================================================= */
+
+.reset-row {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 4px;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .app-header {
+    padding: 16px 20px;
+  }
+
+  .app-main {
+    padding: 30px 16px 50px;
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .summary__item {
+    min-height: 105px;
+  }
+
+  .drop-screen {
+    min-height: 60vh;
+  }
+
+  .dropzone {
+    padding: 50px 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .app-header {
+    padding: 15px 16px;
+  }
+
+  .app-main {
+    padding: 24px 12px 40px;
+  }
+
+  .app-header__title {
+    font-size: 15px;
+  }
+
+  .dropzone {
+    padding: 42px 18px;
+    border-radius: 14px;
+  }
+
+  .dropzone__text {
+    font-size: 16px;
+  }
+
+  .summary__item {
+    padding: 18px;
+  }
+
+  .summary__value {
+    font-size: 24px;
+  }
+
+  .mv-table th,
+  .mv-table td {
+    padding: 10px 12px;
+  }
+}
+
